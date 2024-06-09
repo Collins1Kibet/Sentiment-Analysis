@@ -2,6 +2,7 @@ import os
 import json
 import numpy as np
 import streamlit as st
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -10,6 +11,8 @@ working_directory = os.path.dirname(os.path.abspath(__file__))
 movie_reviews_model_path = os.path.join(working_directory, 'Notebook', 'Movie_Reviews_Model.h5')
 tokenizer_config_path = os.path.join(working_directory, 'Notebook', 'tokenizer_config.json')
 tokenizer_word_index_path = os.path.join(working_directory, 'Notebook', 'tokenizer_word_index.json')
+
+tf.get_logger().setLevel('DEBUG')
 
 model = load_model(movie_reviews_model_path)
 
