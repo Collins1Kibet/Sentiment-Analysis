@@ -11,6 +11,10 @@ movie_reviews_model_path = os.path.join(working_directory, 'Notebook', 'Movie_Re
 tokenizer_config_path = os.path.join(working_directory, 'Notebook', 'tokenizer_config.json')
 tokenizer_word_index_path = os.path.join(working_directory, 'Notebook', 'tokenizer_word_index.json')
 
+assert os.path.isfile(movie_reviews_model_path), "Model file not found."
+assert os.path.isfile(tokenizer_config_path), "Tokenizer config file not found."
+assert os.path.isfile(tokenizer_word_index_path), "Tokenizer word index file not found."
+
 model = load_model(movie_reviews_model_path)
 
 with open(tokenizer_config_path, 'r') as json_file:
