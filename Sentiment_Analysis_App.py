@@ -15,11 +15,9 @@ model = load_model(movie_reviews_model_path)
 
 with open(tokenizer_config_path, 'r') as json_file:
     tokenizer_config = json.load(json_file)
-tokenizer = Tokenizer.from_config(tokenizer_config)
 
-with open(tokenizer_word_index_path, 'r') as json_file:
-    word_index = json.load(json_file)
-tokenizer.word_index = word_index
+tokenizer = Tokenizer(num_words=5000)
+tokenizer.word_index = json.load(open(tokenizer_word_index_path, 'r'))
 
 def predict_sentiment(review):
     sequence = tokenizer.texts_to_sequences([review])
