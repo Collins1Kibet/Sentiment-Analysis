@@ -5,7 +5,10 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequense import pad_sequences
 
-model = load_model('Movie_Reviews_Model.h5')
+working_directory = os.path.dirname(os.path.abspath(__file__))
+movie_reviews_model_path = os.path.join(working_directory, 'Notebook', 'Movie_Reviews_Model.h5')
+
+model = load_model(movie_reviews_model_path)
 
 with open('tokenizer.json', 'r') as t:
     tokenizer_data = json.load(t)
