@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 working_directory = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(working_directory, "Notebook", "Movie_Reviews_Model.h5")
+model_path = os.path.join(working_directory, "Notebook", "Model.keras")
 tokenizer_path = os.path.join(working_directory, "Notebook", "tokenizer_word_index.json")
 
 model = load_model(model_path)
