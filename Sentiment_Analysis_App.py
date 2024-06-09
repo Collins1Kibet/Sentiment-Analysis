@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 working_directory = os.path.dirname(os.path.abspath(__file__))
 
 model_path = os.path.join(working_directory, "Notebook", "Movie_Reviews_Model.h5")
-tonizer_path = os.path.join(working_directory, "Notebook", "tokenizer_word_index.json")
+tokenizer_path = os.path.join(working_directory, "Notebook", "tokenizer_word_index.json")
 
 model = load_model(model_path)
 
