@@ -13,10 +13,17 @@ movie_reviews_model_path = os.path.join(working_directory, 'Notebook', 'Movie_Re
 tokenizer_config_path = os.path.join(working_directory, 'Notebook', 'tokenizer_config.json')
 tokenizer_word_index_path = os.path.join(working_directory, 'Notebook', 'tokenizer_word_index.json')
 
-# Ensuring the paths are correct
-assert os.path.isfile(movie_reviews_model_path), "Model file not found."
-assert os.path.isfile(tokenizer_config_path), "Tokenizer config file not found."
-assert os.path.isfile(tokenizer_word_index_path), "Tokenizer word index file not found."
+tokenizer = None
+model = None
+
+# Loading the model with verbose logging
+try:
+    assert os.path.isfile(movie_reviews_model_path), "Model file not found."
+    model = load_model(movie_reviews_model_path)
+    print("Model loaded successfully!")
+except Exception as e:
+    print(f"Error loading the model: {e}")
+
 
 try:
     model = load_model(movie_reviews_model_path)
