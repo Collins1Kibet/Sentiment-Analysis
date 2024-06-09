@@ -8,13 +8,18 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 working_directory = os.path.dirname(os.path.abspath(__file__))
 movie_reviews_model_path = os.path.join(working_directory, 'Notebook', 'Movie_Reviews_Model.h5')
-movie_reviews_tokenizer_path = os.path.join(working_directory, 'Notebook', 'tokenizer.json')
+tokenizer_config_path = os.path.join(working_directory, 'Notebook', 'tokenizer_config.json')
+tokenizer_word_index_path = os.path.join(working_directory, 'Notebook', 'tokenizer_word_index.json')
 
 model = load_model(movie_reviews_model_path)
 
-with open(movie_reviews_tokenizer_path, 'r') as t:
-    tokenizer_data = json.load(t)
-    tokenizer = Tokenizer.from_json(tokenizer_data)
+with open(tokenizer_config_path, 'r') as json_file:
+    tokenizer_config = json.load(json_file)
+tokenizer = Tokenizer.from_config(tokenizer_config)
+
+with open(tokenizer_word_index_path, 'r') as json_file:
+    word_index = json.load(json_file)
+tokenizer.word_index = word_index
 
 def predict_sentiment(review):
     sequence = tokenizer.texts_to_sequences([review])
