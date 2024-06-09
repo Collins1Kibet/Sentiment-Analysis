@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 working_directory = os.path.dirname(os.path.abspath(__file__))
 movie_reviews_model_path = os.path.join(working_directory, 'Notebook', 'Movie_Reviews_Model.h5')
-movie_reviews_tokenizer_path = os.path.join(working_directory, 'Notebook', 'tokenizer.json')  # Corrected variable name
+movie_reviews_tokenizer_path = os.path.join(working_directory, 'Notebook', 'tokenizer.json')
 
 model = load_model(movie_reviews_model_path)
 
