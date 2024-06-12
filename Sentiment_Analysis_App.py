@@ -6,16 +6,27 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
+# Define the paths
 working_directory = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(working_directory, "Notebook", "Model.keras")
 tokenizer_path = os.path.join(working_directory, "Notebook", "tokenizer_word_index.json")
 
+# Check if the files exist
+if not os.path.exists(model_path):
+    st.error(f"Model file not found at {model_path}")
+    st.stop()
+if not os.path.exists(tokenizer_path):
+    st.error(f"Tokenizer file not found at {tokenizer_path}")
+    st.stop()
+
+# Load the model
 try:
     model = load_model(model_path)
 except Exception as e:
     st.error(f"Error loading model: {e}")
     st.stop()
 
+# Load the tokenizer
 try:
     with open(tokenizer_path, 'r') as json_file:
         word_index = json.load(json_file)
